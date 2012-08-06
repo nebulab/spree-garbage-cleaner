@@ -3,8 +3,11 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_garbage_cleaner'
   s.version     = '1.1.3'
-  s.summary     = 'TODO: Add gem summary here'
-  s.description = 'TODO: Add (optional) gem description here'
+  s.summary     = 'A little gem that helps you cleanup old, unneeded data from a Spree database.'
+  s.description = """
+      This spree extensions will help you cleanup old and useless data gathered by spree while you use it,
+      like anonymous users and old, incomplete orders.
+  """
   s.required_ruby_version = '>= 1.8.7'
 
   s.author    = 'NebuLab'
