@@ -33,4 +33,10 @@ describe Spree::Order do
     order = Factory.build(:order, :created_at => ordered_on.days.ago, :completed_at => Time.now)
     order.garbage?.should be_false
   end
+
+  it "is not garbage if completed and not past cleanup_days_interval" do
+    ordered_on = Spree::GarbageCleaner::Config.cleanup_days_interval
+    order = Factory.build(:order, :completed_at => Time.now)
+    order.garbage?.should be_false
+  end
 end
