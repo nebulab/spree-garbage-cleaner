@@ -18,8 +18,8 @@ Run bundle:
 bundle
 ```
 
-Configure number of days after models are considered garbage
-------------------------------------------------------------
+Configure number of days after records are considered garbage
+-------------------------------------------------------------
 
 For each model for which Spree collects garbage records you can choose after how many days those records are marked as garbage. Default value is 7 (one week). 
 To change this default value you can run from the rails console:
