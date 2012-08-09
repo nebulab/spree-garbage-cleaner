@@ -3,5 +3,5 @@
 
 '1.1.x'  => { :branch => 'master' }
 '1.0.x'  => { :branch => 'master' }
-'0.30.x' => { :branch => '0-30-stable' }
+#'0.30.x' => { :branch => '0-30-stable' }
 
