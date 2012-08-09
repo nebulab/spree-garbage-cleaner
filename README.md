@@ -1,5 +1,7 @@
 ## SpreeGarbageCleaner
 
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/nebulab/spree-garbage-cleaner)
+
 This extension cleans your Spree database from unneeded data.
 When your website grows, it could be useful to delete these old records to improve database performance.
 
