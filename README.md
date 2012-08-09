@@ -1,18 +1,17 @@
 ## SpreeGarbageCleaner
 
-This extension allows to clean your database from unneeded data.
-When your website grows, it could be useful to delete
-this old records to improve database performance.
+This extension cleans your Spree database from unneeded data.
+When your website grows, it could be useful to delete these old records to improve database performance.
 
-*Important notice:* This extension can delete a lot of stuff from your database. It is thought to be used with some default Spree behaviors so be sure to know what you are approaching to do expecially if your app has a lot of custom stuff!
+**Important notice:** This extension can delete a lot of stuff from your database. It is thought to be used with some default Spree behaviors so be sure to know what you are doing, expecially if your app has a lot of custom stuff!
 
-### What this garbage contains?
+### What does this garbage contain?
 
 #### Incomplete orders
 
-By default incomplete orders remain also when they are not completed.
-This extension search for incomplete orders and delete them and their
-destroy dependent association instances:
+By default incomplete orders are kept even if they are not completed.
+This extension searches for incomplete orders and deletes them and their 
+dependent association instances:
 
 - line items
 - payments
@@ -22,8 +21,8 @@ destroy dependent association instances:
 
 #### Anonymous users
 
-When (not logged) users begin to add items to cart, an anonymous user is
-created and associated to the new order. This extension delete all old
+When (not logged in) users begin to add items to cart, an anonymous user is
+created and associated to the new order. This extension deletes all old
 anonymous users that have never completed orders.
 
 ## Installation
@@ -42,21 +41,21 @@ bundle
 
 ## Usage
 
-To verify presence of garbage in your database launch the stats rake task:
+To verify presence of garbage in your database run the stats rake task:
 
 ```
 rake db:garbage:stats
 ```
 
-To delete garbage from your database launch the cleanup rake task:
+To delete garbage from your database run the cleanup rake task:
 
 ```
 rake db:garbage:cleanup
 ```
 
-## Configure number of days after records are considered garbage
+## Configure the number of days after which records are considered garbage
 
-For each model for which Spree collects garbage records you can choose after how many days those records are marked as garbage. Default value is 7 (one week). 
+For each model that collects garbage records you can choose after how many days those records are marked as garbage. Default value is 7 (one week). 
 To change this default value you can run from the rails console:
 
 ```ruby
@@ -65,8 +64,7 @@ Spree::GarbageCleaner::Config.set(:cleanup_days_interval, 10)
 
 ## Setup a cronjob to cleanup garbage
 
-You can setup a cronjob that launch the cleanup rake task for you. Just add `whenever` gem to your Gemfile and this to your
-`config/schedule.rb`:
+You can setup a cronjob that periodically runs the cleanup rake task for you. Just add the `whenever` gem to your Gemfile and this to your `config/schedule.rb`:
 
 ```
 every 1.day, :at => '5:00 am' do
