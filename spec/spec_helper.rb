@@ -1,6 +1,8 @@
 # Configure Rails Environment
 ENV['RAILS_ENV'] = 'test'
 
+require 'spree_core'
+
 require File.expand_path('../dummy/config/environment.rb',  __FILE__)
 
 require 'rspec/rails'

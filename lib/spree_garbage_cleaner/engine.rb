@@ -1,16 +1,9 @@
 module SpreeGarbageCleaner
   class Engine < Rails::Engine
-    require 'spree/core'
-    isolate_namespace Spree
+    require 'spree_core'
     engine_name 'spree_garbage_cleaner'
 
     config.autoload_paths += %W(#{config.root}/lib)
-
-    initializer "spree.garbage_cleaner.preferences", :after => "spree.environment" do |app|
-      module Spree::GarbageCleaner
-        Config = Spree::GarbageCleanerConfiguration.new
-      end
-    end
 
     # use rspec for tests
     config.generators do |g|
