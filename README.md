@@ -77,10 +77,7 @@ end
 
 ## Testing
 
-Be sure to bundle your dependencies and then create a dummy test app for the specs to run against.
-
-    $ bundle
-    $ bundle exec rake test_app
-    $ bundle exec rspec spec
+Testing is not implemented for version 0.30 of Spree since is so hard to do... It takes way too much time for "legacy support".
+Let's hope in the future testing will be implemented.
 
 Copyright (c) 2012 NebuLab, released under the New BSD License
