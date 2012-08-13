@@ -33,7 +33,7 @@ anonymous users that have never completed orders.
 Add the gem to your Gemfile:
 
 ```ruby
-gem 'spree_garbage_cleaner', :git => 'git://github.com/nebulab/spree-garbage-cleaner.git'
+gem 'spree_garbage_cleaner', :git => 'git://github.com/nebulab/spree-garbage-cleaner.git', :branch => '1-0-stable'
 ```
 
 Run bundle:
