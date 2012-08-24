@@ -1,12 +1,16 @@
 ## SpreeGarbageCleaner
 
-[![Build Status](https://secure.travis-ci.org/nebulab/spree-garbage-cleaner.png?branch=master)](http://travis-ci.org/nebulab/spree-garbage-cleaner) 
+[![Build
+Status](https://secure.travis-ci.org/nebulab/spree-garbage-cleaner.png?branch=1-2-stable)](http://travis-ci.org/nebulab/spree-garbage-cleaner) 
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/nebulab/spree-garbage-cleaner)
 
 This extension cleans your Spree database from unneeded data.
 When your website grows, it could be useful to delete these old records to improve database performance.
 
-**Important notice:** This extension can delete a lot of stuff from your database. It is thought to be used with some default Spree behaviors so be sure to know what you are doing, expecially if your app has a lot of custom stuff!
+**Important notice 1:** This extension can delete a lot of stuff from your database. It is thought to be used with some default Spree behaviors so be sure to know what you are doing, expecially if your app has a lot of custom stuff!
+
+**Important notice 2:** This extension is tested only with the
+`spree_auth_devise` extension.  
 
 ### What does this garbage contain?
 
@@ -33,7 +37,7 @@ anonymous users that have never completed orders.
 Add the gem to your Gemfile:
 
 ```ruby
-gem 'spree_garbage_cleaner', :git => 'git://github.com/nebulab/spree-garbage-cleaner.git'
+gem 'spree_garbage_cleaner', :git => 'git://github.com/nebulab/spree-garbage-cleaner.git', :branch => '1-2-stable'
 ```
 
 Run bundle:
