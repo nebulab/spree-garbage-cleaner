@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe Spree::User do
+describe Spree.user_class do
   let(:created_on) { Spree::GarbageCleaner::Config.cleanup_days_interval }
 
   context "class methods" do
     before do
-      @user_one = Spree::User.anonymous!   # garbage
-      @user_two = Spree::User.anonymous!   # garbage
-      @user_three = Spree::User.anonymous! # not garbage
+      @user_one = Spree.user_class.anonymous!   # garbage
+      @user_two = Spree.user_class.anonymous!   # garbage
+      @user_three = Spree.user_class.anonymous! # not garbage
       @user_four = Factory(:user)          # not garbage
 
       Factory(:order, :user => @user_one)
@@ -20,13 +20,13 @@ describe Spree::User do
     end
 
     it "has a garbage finder method" do
-      Spree::User.garbage.should == [@user_one, @user_two]
+      Spree.user_class.garbage.should == [@user_one, @user_two]
     end
 
     it "has a method to destroy garbage" do
-      Spree::User.destroy_garbage.should == [@user_one, @user_two]
-      Spree::User.garbage.count.should == 0
-      Spree::User.all.should include(@user_three, @user_four)
+      Spree.user_class.destroy_garbage.should == [@user_one, @user_two]
+      Spree.user_class.garbage.count.should == 0
+      Spree.user_class.all.should include(@user_three, @user_four)
     end
   end
 
@@ -37,13 +37,13 @@ describe Spree::User do
     end
 
     it "is garbage if anonymous and past cleanup_days_interval" do
-      user = Spree::User.anonymous!
+      user = Spree.user_class.anonymous!
       user.update_column(:created_at, created_on.days.ago)
       user.garbage?.should be_true
     end
 
     it "is not garbage if anonymous and not past cleanup_days_interval" do
-      user = Spree::User.anonymous!
+      user = Spree.user_class.anonymous!
       user.update_column(:created_at, (created_on-1).days.ago)
       user.garbage?.should be_false
     end
@@ -59,7 +59,7 @@ describe Spree::User do
     end
 
     it "is not garbage if it has a completed order associated to" do
-      user = Spree::User.anonymous!
+      user = Spree.user_class.anonymous!
       user.update_column(:created_at, created_on.days.ago)
       order = Factory(:completed_order_with_totals, :user => user)
       user.garbage?.should be_false
