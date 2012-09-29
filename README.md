@@ -62,7 +62,7 @@ For each model that collects garbage records you can choose after how many days 
 To change this default value you can run from the rails console:
 
 ```ruby
-Spree::GarbageCleaner::Config.set(:cleanup_days_interval, 10)
+Spree::GarbageCleaner::Config.set(:cleanup_days_interval => 10)
 ```
 
 ## Setup a cronjob to cleanup garbage
