@@ -3,6 +3,7 @@
 # 
 #'0.30.x' => { :branch => '0-30-stable' }
 
-'1.1.x'  => { :branch => 'master' }
-'1.0.x'  => { :branch => 'master' }
+'1.2.x'  => { :branch => '1-2-stable' }
+'1.1.x'  => { :branch => '1-1-stable' }
+'1.0.x'  => { :branch => '1-0-stable' }
 
