@@ -1,8 +1,0 @@
-# This file is used to designate compatibilty with different versions of Spree
-# Please see http://spreecommerce.com/documentation/extensions.html#versionfile for details
-# 
-#'0.30.x' => { :branch => '0-30-stable' }
-
-'1.1.x'  => { :branch => 'master' }
-'1.0.x'  => { :branch => 'master' }
-
