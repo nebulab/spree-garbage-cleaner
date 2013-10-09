@@ -8,6 +8,4 @@ end
 
 gemspec
 
-gem 'spree_auth_devise',
-    :git => 'git@github.com:spree/spree_auth_devise.git',
-    :branch => '2-0-stable'
+gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-0-stable'
