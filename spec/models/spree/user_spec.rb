@@ -8,11 +8,11 @@ describe Spree.user_class do
       @user_one = Spree.user_class.anonymous!   # garbage
       @user_two = Spree.user_class.anonymous!   # garbage
       @user_three = Spree.user_class.anonymous! # not garbage
-      @user_four = Factory(:user)          # not garbage
+      @user_four = create(:user)                # not garbage
 
-      Factory(:order, :user => @user_one)
-      Factory(:order, :user => @user_two)
-      Factory(:completed_order_with_totals, :user => @user_three)
+      create(:order, :user => @user_one)
+      create(:order, :user => @user_two)
+      create(:completed_order_with_totals, :user => @user_three)
 
       @user_one.update_column(:created_at, (created_on+rand(10)).days.ago)
       @user_two.update_column(:created_at, (created_on+rand(10)).days.ago)
@@ -42,7 +42,7 @@ describe Spree.user_class do
 
   context "instance methods" do
     it "has a method that tells if order is garbage" do
-      user = Factory.build(:user)
+      user = build(:user)
       user.should respond_to(:garbage?)
     end
 
@@ -59,19 +59,19 @@ describe Spree.user_class do
     end
 
     it "is not garbage if not anonymous and past cleanup_days_interval" do
-      user = Factory.build(:user, :created_at => created_on.days.ago)
+      user = build(:user, :created_at => created_on.days.ago)
       user.garbage?.should be_false
     end
 
     it "is not garbage if not anonymous and not past cleanup_days_interval" do
-      user = Factory.build(:user)
+      user = build(:user)
       user.garbage?.should be_false
     end
 
     it "is not garbage if it has a completed order associated to" do
       user = Spree.user_class.anonymous!
       user.update_column(:created_at, created_on.days.ago)
-      order = Factory(:completed_order_with_totals, :user => user)
+      order = create(:completed_order_with_totals, :user => user)
       user.garbage?.should be_false
     end
   end
