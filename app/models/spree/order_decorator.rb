@@ -1,8 +1,6 @@
 module Spree
   Order.class_eval do
-    def self.destroy_garbage
-      self.garbage.destroy_all
-    end
+    include SpreeGarbageCleaner::Helpers::ActiveRecord
 
     def self.garbage
       garbage_after = Spree::GarbageCleaner::Config.cleanup_days_interval
