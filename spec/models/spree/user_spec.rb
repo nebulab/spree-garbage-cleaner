@@ -23,10 +23,20 @@ describe Spree.user_class do
       Spree.user_class.garbage.should == [@user_one, @user_two]
     end
 
-    it "has a method to destroy garbage" do
-      Spree.user_class.destroy_garbage.should == [@user_one, @user_two]
-      Spree.user_class.garbage.count.should == 0
-      Spree.user_class.all.should include(@user_three, @user_four)
+    context ".destroy_garbage" do
+      it "has a method to destroy garbage" do
+        Spree.user_class.destroy_garbage.should == [@user_one, @user_two]
+        Spree.user_class.garbage.count.should == 0
+        Spree.user_class.all.should include(@user_three, @user_four)
+      end
+
+      it "destroys garbage in batches" do
+        dummy_garbage = [@user_one, @user_two]
+        Spree.user_class.stub(:garbage).and_return(dummy_garbage)
+
+        dummy_garbage.should_receive(:find_each).with(:batch_size => Spree::GarbageCleaner::Config.batch_size)
+        Spree.user_class.destroy_garbage
+      end
     end
   end
 

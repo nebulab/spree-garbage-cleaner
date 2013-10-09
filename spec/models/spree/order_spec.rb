@@ -14,10 +14,20 @@ describe Spree::Order do
       Spree::Order.garbage.should == [@order_one, @order_two]
     end
 
-    it "has a method to destroy garbage" do
-      Spree::Order.destroy_garbage.should == [@order_one, @order_two]
-      Spree::Order.garbage.count.should == 0
-      Spree::Order.all.should include(@order_three)
+    context ".destroy_garbage" do
+      it "has a method to destroy garbage" do
+        Spree::Order.destroy_garbage.should == [@order_one, @order_two]
+        Spree::Order.garbage.count.should == 0
+        Spree::Order.all.should include(@order_three)
+      end
+
+      it "destroys garbage in batches" do
+        dummy_garbage = [@order_one, @order_two]
+        Spree::Order.stub(:garbage).and_return(dummy_garbage)
+
+        dummy_garbage.should_receive(:find_each).with(:batch_size => Spree::GarbageCleaner::Config.batch_size)
+        Spree::Order.destroy_garbage
+      end
     end
   end
 
