@@ -1,7 +1,8 @@
 ## SpreeGarbageCleaner
 
 [![Build
-Status](https://secure.travis-ci.org/nebulab/spree-garbage-cleaner.png?branch=1-2-stable)](http://travis-ci.org/nebulab/spree-garbage-cleaner) 
+Status](https://secure.travis-ci.org/nebulab/spree-garbage-cleaner.png?branch=1-2-stable)](http://travis-ci.org/nebulab/spree-garbage-cleaner)
+[![Coverage Status](https://coveralls.io/repos/nebulab/spree-garbage-cleaner/badge.png?branch=master)](https://coveralls.io/r/nebulab/spree-garbage-cleaner?branch=master)
 [![Code Climate](https://codeclimate.com/github/nebulab/spree-garbage-cleaner.png)](https://codeclimate.com/github/nebulab/spree-garbage-cleaner)
 
 This extension cleans your Spree database from unneeded data.
