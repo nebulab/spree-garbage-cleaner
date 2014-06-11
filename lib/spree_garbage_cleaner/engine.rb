@@ -1,7 +1,6 @@
 module SpreeGarbageCleaner
   class Engine < Rails::Engine
     require 'spree_core'
-    engine_name 'spree_garbage_cleaner'
 
     config.autoload_paths += %W(#{config.root}/lib)
 
